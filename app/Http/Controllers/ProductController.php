@@ -15,8 +15,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return ProductCollection::collection(Product::all());
+    {   
+        /*retorna todos os dados da tabela produto
+        definidos na classe ProductCollection, por paginação 20*/
+        return ProductCollection::collection(Product::paginate(20));
     }
 
     /**
@@ -48,7 +50,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {   
-//        return $product;
+        /*return os dados de um $product, definido na
+        classe ProductResource*/
         return new ProductResource($product);
     }
 
